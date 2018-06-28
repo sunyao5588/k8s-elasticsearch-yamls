@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-discovery-all
+  labels:
+    component: elasticsearch
+    role: es-all-role
+spec:
+  type: NodePort
+  selector:
+    component: elasticsearch
+    role: es-all-role
+  ports:
+  - name: transport
+    port: 9300
+    targetPort: 9300
+    nodePort: 30031
+    protocol: TCP
